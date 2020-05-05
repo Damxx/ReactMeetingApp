@@ -4,7 +4,7 @@ import EventListAttendee from "./EventListAttendee";
 
 class EventListItem extends Component {
   render() {
-    const { event } = this.props;
+    const { event, selectedEvenet, handleDeleteEvenet } = this.props;
     return (
       <Segment.Group>
         <Segment>
@@ -32,14 +32,28 @@ class EventListItem extends Component {
         </Segment>
         <Segment secondary>
           <List horizontal>
-            {event.attendees.map((e) => (
-              <EventListAttendee key={e.id} attendees={e} />
-            ))}
+            {event.attendees &&
+              event.attendees.map((e) => (
+                <EventListAttendee key={e.id} attendees={e} />
+              ))}
           </List>
         </Segment>
         <Segment clearing>
           <span>{event.description}</span>
-          <Button as="a" color="teal" floated="right" content="View" />
+          <Button
+            onClick={() => selectedEvenet(event)}
+            as="a"
+            color="teal"
+            floated="right"
+            content="View"
+          />
+          <Button
+            onClick={() => handleDeleteEvenet(event.id)}
+            as="a"
+            color="red"
+            floated="right"
+            content="Delete"
+          />
         </Segment>
       </Segment.Group>
     );
