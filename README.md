@@ -1,1 +1,1 @@
-https://reactmeetingsapp.firebaseapp.com/events
+https://reactmeetingsapp.firebaseapp.com
